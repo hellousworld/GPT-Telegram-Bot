@@ -369,7 +369,7 @@ async function handleMessage(update) {
 
   try {
     if (!WHITELISTED_USERS.includes(userId)) {
-      await bot.sendMessage(chatId, 'Sorry, you are not authorized to use this bot.'  + userId, {parse_mode: 'Markdown'});
+      await bot.sendMessage(chatId, 'Sorry, you are not authorized to use this bot.', {parse_mode: 'Markdown'});
       return;
     }
 
