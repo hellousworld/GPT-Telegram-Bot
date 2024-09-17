@@ -1,126 +1,176 @@
-# 🤖 GPT-Telegram-Bot：你的多才多艺 AI 助手！
+# GPT-Telegram-Bot: Multifunctional AI Assistant 🤖💬
 
-嘿，欢迎来到 GPT-Telegram-Bot 的奇妙世界！这个小机器人不仅能陪你聊天解闷，还能变身为你的私人画家和图片解读大师。最棒的是，它懂多种"外语"（不同的 AI 模型啦），随时准备跟你展开一场脑洞大开的对话冒险！
+[English](./README.md) | [简体中文](./docs/README.zh-cn.md) | [繁體中文](./docs/README.zh-hant.md) | [日本語](./docs/README.ja.md) | [Español](./docs/README.es.md) | [Français](./docs/README.fr.md) | [Русский](./docs/README.ru.md) | [Deutsch](./docs/README.de.md)
 
-## 🌟 这个机器人能做啥好玩的？
+GPT-Telegram-Bot is a powerful Telegram bot that integrates various AI models, providing intelligent conversations, image generation and analysis capabilities.
 
-1. 🗣️ **话痨模式**：它能跟你聊到天荒地老，用多种 AI 模型陪你度过无聊时光。
-2. 🎭 **百变大咖**：厌倦了一个 AI？换一个呗！多种模型任你挑选，找到最懂你的那个。
-3. 🧠 **记忆超群**：过目不忘的对话历史，让你们的闲聊永远有话题。
-4. 🎨 **绘画小能手**：说出你的幻想，它能画给你看（别指望它能进艺术学院就是了）。
-5. 🔍 **图片福尔摩斯**：给它看张图，它能给你讲出一个故事（脑补成分因人而异）。
-6. 💨 **急性子福音**：讨厌等待？它用流式回复帮你省去干等的痛苦。
-7. 🔐 **专属VIP**：只为特定用户服务，你就是那个特别的人！
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsnakeying%2FGPT-Telegram-Bot)
 
-## 🧠 这机器人有多聪明？
+## Main Features 🌟
 
-它懂得"说"的语言可不少：
-- OpenAI 的 GPT 系列：最擅长装大神
-- Google 的 Gemini：来自谷歌的新秀，懂点儿算术
-- Anthropic 的 Claude：最会装傻卖萌
-- Groq 的模型：速度快得像闪电侠
-- Azure OpenAI：微软给 OpenAI 穿上了西装
+1. **Multi-model Support** 🎭: Any model compatible with OpenAI API, Google Gemini, Anthropic Claude, Groq, and Azure OpenAI
+2. **Intelligent Conversations** 💬: Natural language interactions with context memory support
+3. **Image Generation** 🎨: Create images based on text descriptions
+4. **Image Analysis** 🔍: Interpret and describe uploaded images
+5. **Multilingual Support** 🌐: Localization support for multiple languages
+6. **Stream Response** ⚡: Real-time generation and display of AI replies
+7. **User Whitelist** 🔐: Can be set to allow access only to specific users
 
-## 🚀 怎么把这个机器人带回家？
+## Supported AI Models 🧠
 
-### 准备工作（别慌，很简单）
+- OpenAI Series: Powerful language models 🚀
+- Google Gemini: Google's next-generation AI model 🧑‍🔬
+- Anthropic Claude: Another powerful language model choice 🎭
+- Groq: High-speed inference AI model ⚡
+- Azure OpenAI: Microsoft-hosted OpenAI service 👔
 
-- [Vercel](https://vercel.com/) 账号：你的机器人的豪华公寓
-- 至少一个 AI 朋友的电话号码（API 密钥啦）
-- [Telegram](https://telegram.org/) 账号和 Bot Token：没它们机器人就是个哑巴
-- [Upstash](https://upstash.com/) Redis 数据库：机器人的超级记忆仓库
-
-### 第 1 步：复制一份机器人的 DNA
-
-```bash
-git clone https://github.com/snakeying/GPT-Telegram-Bot.git
-cd GPT-Telegram-Bot
-```
-
-### 第 2 步：给机器人喂饭（安装依赖）
-
-```bash
-npm install
-```
-
-### 第 3 步：教机器人你的密码（配置环境变量）
-
-创建一个 `.env` 文件，往里面塞这些神秘代码：
+## Project Structure 📁
 
 ```
-TELEGRAM_BOT_TOKEN=你的_telegram_机器人_令牌
-WHITELISTED_USERS=允许使用的用户ID,用逗号分隔
-UPSTASH_REDIS_REST_URL=你的_upstash_redis_网址
-UPSTASH_REST_TOKEN=你的_upstash_redis_令牌
-SYSTEM_INIT_MESSAGE=你是个有趣的助手。
-SYSTEM_INIT_MESSAGE_ROLE=system
-DEFAULT_MODEL=你默认喜欢的模型名称
-
-# OpenAI 的秘密手势（选填）
-OPENAI_API_KEY=你的_openai_api_密钥
-OPENAI_BASE_URL=https://api.openai.com/v1
-OPENAI_MODELS=gpt-4,gpt-3.5-turbo
-DALL_E_MODEL=dall-e-3
-
-# Google Gemini 的暗号（选填）
-GEMINI_API_KEY=你的_gemini_api_密钥
-GOOGLE_MODELS=gemini-pro,gemini-pro-vision
-
-# Anthropic Claude 的咒语（选填）
-CLAUDE_API_KEY=你的_claude_api_密钥
-CLAUDE_MODELS=claude-2,claude-instant-1
-
-# Groq 的飞行密码（选填）
-GROQ_API_KEY=你的_groq_api_密钥
-GROQ_MODELS=llama2-70b-4096,mixtral-8x7b-32768
-
-# Azure OpenAI 的通关密语（选填）
-AZURE_OPENAI_API_KEY=你的_azure_openai_api_密钥
-AZURE_OPENAI_ENDPOINT=你的_azure_openai_端点
-AZURE_OPENAI_MODELS=你的-gpt-4-部署名,你的-gpt-35-turbo-部署名
+GPT-Telegram-Bot/
+├── api/                 # API related configurations
+│   └── telegram.js      # Handle Telegram bot interactions
+├── src/                 # Source code
+│   ├── bot.js           # Main Telegram bot logic
+│   ├── api.js           # Handle API interactions
+│   ├── config.js        # Configuration file
+│   ├── uploadhandler.js # Handle image uploads
+│   └── redis.js         # Upstash Redis database functionality
+├── locales/             # Multilingual support files
+├── package.json         # Project dependencies
+├── vercel.json          # Vercel configuration file
+└── .gitignore           # Git ignore file
 ```
 
-别忘了把里面的 "你的_xxx" 替换成真实的值哦，不然机器人会闹脾气的！
+- `api/telegram.js`: Handles webhook requests from Telegram
+- `src/bot.js`: Contains main bot logic and command processing
+- `src/api.js`: Manages API interactions with different AI services
+- `src/config.js`: Stores project configurations and environment variables
+- `src/uploadhandler.js`: Handles image upload and analysis functionality
+- `src/redis.js`: Manages interactions with Upstash Redis, used for storing conversation history
+- `locales/`: Contains translation files for different languages, supporting multilingual functionality
 
-### 第 4 步：给机器人找个家（部署到 Vercel）
+## Quick Start 🚀
 
-1. 在 Vercel 上开一间新房（创建项目）。
-2. 把你的 GitHub 仓库和 Vercel 牵个线。
-3. 偷偷告诉 Vercel 你的小秘密（环境变量）。
-4. 按下神奇的部署按钮！
+### Prerequisites
 
-### 第 5 步：告诉 Telegram 你的机器人住哪儿
+- [Vercel](https://vercel.com/) account
+- Telegram account and Bot Token
+- [Upstash](https://upstash.com/) Redis database
+- API key for at least one AI service
 
-部署完成后，用下面的魔法链接（记得换掉占位符）告诉 Telegram 你的机器人的新地址：
+### Deployment Steps
 
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/snakeying/GPT-Telegram-Bot.git
+   cd GPT-Telegram-Bot
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Configure environment variables:
+   Create a `.env` file and fill in the necessary configuration information (refer to the environment variable configuration below).
+
+4. Deploy to Vercel:
+   - Fork this repo
+   - Modify according to the instructions at the bottom of the readme
+   - Click the "Deploy with Vercel" button
+   - Connect your GitHub repository
+   - Configure environment variables
+   - Complete deployment
+
+5. Set up Telegram Webhook:
+   After deployment, use the following URL to set up the Webhook:
+   ```
+   https://api.telegram.org/bot<YOUR_BOT_TOKEN>/setWebhook?url=<YOUR_VERCEL_DOMAIN>/api/telegram
+   ```
+
+## Environment Variable Configuration 🔧
+
+Before deploying and running GPT-Telegram-Bot, you need to set the following environment variables. Create a `.env` file in the project root directory and configure the following variables:
+
+| Variable Name | Description | Default Value |
+|--------|------|--------|
+| `OPENAI_API_KEY` | OpenAI API key | - |
+| `OPENAI_BASE_URL` | OpenAI API base URL | https://api.openai.com/v1 |
+| `OPENAI_MODELS` | OpenAI models to use (comma-separated) | - |
+| `DEFAULT_MODEL` | Default model to use | First model in OPENAI_MODELS |
+| `AZURE_OPENAI_API_KEY` | Azure OpenAI API key | - |
+| `AZURE_OPENAI_ENDPOINT` | Azure OpenAI endpoint | - |
+| `AZURE_OPENAI_MODELS` | Azure OpenAI models to use (comma-separated) | - |
+| `TELEGRAM_BOT_TOKEN` | Telegram Bot Token | - |
+| `WHITELISTED_USERS` | Allowed user IDs (comma-separated) | - |
+| `DALL_E_MODEL` | DALL-E model to use | dall-e-3 |
+| `UPSTASH_REDIS_REST_URL` | Upstash Redis REST URL | - |
+| `UPSTASH_REDIS_REST_TOKEN` | Upstash Redis REST Token | - |
+| `SYSTEM_INIT_MESSAGE` | System initialization message | You are a helpful assistant. |
+| `SYSTEM_INIT_MESSAGE_ROLE` | System message role | system |
+| `GEMINI_API_KEY` | Google Gemini API key | - |
+| `GOOGLE_MODELS` | Google models to use (comma-separated) | - |
+| `GEMINI_ENDPOINT` | Gemini API endpoint | https://generativelanguage.googleapis.com/v1beta/models |
+| `GROQ_API_KEY` | Groq API key | - |
+| `GROQ_MODELS` | Groq models to use (comma-separated) | - |
+| `MAX_HISTORY_LENGTH` | Maximum history length | 50 |
+| `CLAUDE_API_KEY` | Anthropic Claude API key | - |
+| `CLAUDE_MODELS` | Claude models to use (comma-separated) | - |
+| `CLAUDE_ENDPOINT` | Claude API endpoint | https://api.anthropic.com/v1/chat/completions |
+
+Make sure to add these environment variables to your project's environment configuration when deploying to Vercel or other platforms.
+
+## Usage Guide 📖
+
+- `/start` - Initialize the bot
+- `/new` - Start a new conversation
+- `/history` - View conversation history
+- `/help` - Get help information
+- `/switchmodel <model name>` - Switch AI model
+- `/img <description> [size]` - Generate image
+- `/language <language code>` - Switch interface language
+- Send an image for analysis
+- Send a message directly for conversation
+
+Supported languages (use /language command):
+- English (en)
+- Simplified Chinese (zh-cn)
+- Traditional Chinese (zh-hant)
+- Japanese (ja)
+- Spanish (es)
+- French (fr)
+- Russian (ru)
+- German (de)
+
+## Notes ⚠️
+
+- Use API quotas reasonably, especially when using image features 💸
+- Securely store environment variables and API keys 🔒
+- Different AI models may have different features and limitations 🔄
+- Regularly check and update dependencies to ensure security and performance 🔧
+
+## Contribution 🤝
+
+Welcome to submit Pull Requests or open Issues to improve this project! Your contributions will make this AI assistant more powerful and interesting.
+
+## License 📜
+
+This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
+
+---
+
+About the "Deploy to Vercel" button:
+This button provides a one-click deployment to Vercel, which is very convenient. However, please note:
+
+1. The link in the button points to the original repository (https://github.com/snakeying/GPT-Telegram-Bot).
+2. If you've forked this project and want to deploy your own version, you need to update this button link in the README.
+3. Update method: Replace `snakeying/GPT-Telegram-Bot` in the link with your GitHub username and repository name.
+
+For example, if your GitHub username is "yourname", you should change the button link to:
+
+```markdown
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyourname%2FGPT-Telegram-Bot)
 ```
-https://api.telegram.org/bot<你的机器人令牌>/setWebhook?url=<你的Vercel域名>/api/telegram
-```
 
-## 📖 使用指南：如何驾驭你的 AI 小精灵
-
-- `/start`: 跟机器人打个招呼，开始你们的精彩故事
-- `/new`: 失忆模式启动！忘记过去，重新开始
-- `/history`: 回顾你们的甜蜜回忆（不，只是对话历史）
-- `/help`: 求助热线，遇到问题就呼叫
-- `/switchmodel <模型名称>`: 给你的 AI 换个新发型（切换模型）
-- `/img <描述> [尺寸]`: 变身艺术家，画出你心中的杰作
-- 发送图片：让 AI 化身福尔摩斯，推理图中奥秘
-- 直接发消息：跟 AI 开启漫无边际的脑洞之旅
-
-## ⚠️ 注意事项（认真脸）
-
-- 别把 API 用光了，不然你的 AI 朋友会饿肚子的。
-- 图片功能很酷，但也很能吃 API 额度，慎用！
-- 保护好你的小秘密（环境变量），别让坏人知道了。
-- 每个 AI 模型都有自己的小脾气，要多多包容哦。
-
-## 🤝 来帮忙吧！
-
-发现了让机器人更好玩的方法？快来提交 Pull Request 吧！有什么天马行空的想法？开个 issue 让大家一起头脑风暴！
-
-## 📜 许可证
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
-记住，AI 是你的朋友，不是替代品。多陪陪你身边的真人，偶尔和 AI 聊聊天，让生活更有趣！现在，开始你的 AI 冒险吧！🚀✨
+This ensures that the "Deploy to Vercel" button will deploy your forked version, not the original repository.
